@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LandService} from "../services/land.service";
+import {DarkService} from "../services/dark.service";
 
 @Component({
   selector: 'app-landing-page',
@@ -9,11 +10,13 @@ import {LandService} from "../services/land.service";
 export class LandingPageComponent implements OnInit{
 
   msgFromService: string = "No message yet";
-  constructor(private landService: LandService) { }
+  anotherMsgFromService: string = "No message yet";
+  constructor(private landService: LandService, private darkService: DarkService) { }
 
   ngOnInit(): void {
     this.landService.getLands();
     this.msgFromService = this.landService.getMessageFromLandService();
+    this.anotherMsgFromService = this.darkService.sendDarkMsg();
   }
 
 }
