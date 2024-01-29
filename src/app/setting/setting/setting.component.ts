@@ -23,6 +23,17 @@ export class SettingComponent implements OnInit{
     // This is because the service is provided in the `providers` array of both modules. Each Angular module has its own injector,
     // and when a service is provided in a module, a new instance of the service is created for that module.
     // Therefore, the `DashboardModule` and the `SettingModule` will each have their own instance of `DarkService`.
+
+    // but I didnot import dashboard module in setting module how is this working ?
+
+    // The DarkService is working in the SettingModule because you have provided it in the SettingModule itself.
+    // When you provide a service in a module, Angular's dependency injection system makes that service available to any component,
+    // directive, or pipe that is part of that module.  In your case, you have provided DarkService in the SettingModule:
+
+    // This means that DarkService is available to any component, directive, or pipe that is part of the SettingModule.
+    // It doesn't matter whether DashboardModule is imported into SettingModule or not.
+    // As long as DarkService is provided in the SettingModule, it can be injected into any component,
+    // directive, or pipe in SettingModule.  In your SettingComponent, you are injecting DarkService:
     this.msgFromDarkService = this.darkService.sendDarkMsg();
   }
 
